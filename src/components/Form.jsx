@@ -16,7 +16,7 @@ function Form() {
 
   return (
     <>
-      <main className="flex flex-col items-center bg-[#EDF3F8] min-h-screen">
+      <section className="flex flex-col items-center">
         <h1 className="mt-18.75 mb-13.5 text-[48px] w-143.25 tracking-[-0.37px] leading-14 text-center text-[#36536B] font-normal">
           Submit a help request and we’ll get in touch shortly.
         </h1>
@@ -163,7 +163,7 @@ function Form() {
             submit
           </button>
         </form>
-      </main>
+      </section>
     </>
   );
 }
