@@ -14,12 +14,23 @@ function ImageSlider() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, 4000);
+    }, 7000);
   }, []);
+
+  const handleNext = () => {
+    setCurrent((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+  const handlePrev = () => {
+    setCurrent((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   return (
     <>
-      <img className="h-100" src={images[current]} alt="" />
+      <div className="flex">
+        <button onClick={handlePrev}>==</button>
+        <img className="h-100" src={images[current]} alt="" />
+        <button onClick={handleNext}>==</button>
+      </div>
     </>
   );
 }

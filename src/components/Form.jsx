@@ -195,7 +195,7 @@ function Form() {
                   <path
                     d="M1.06055 6.03415L4.2335 9.20711L12.3799 1.06067"
                     stroke="white"
-                    stroke-width="3"
+                    strokeWidth="3"
                   />
                 </svg>
               </span>
@@ -225,7 +225,7 @@ function Form() {
                 <path
                   d="M1.06055 6.03415L4.2335 9.20711L12.3799 1.06067"
                   stroke="white"
-                  strokewidth="3"
+                  strokeWidth="3"
                 />
               </svg>
             </span>
