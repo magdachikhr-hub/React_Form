@@ -26,10 +26,27 @@ function ImageSlider() {
 
   return (
     <>
-      <div className="flex">
-        <button onClick={handlePrev}>==</button>
-        <img className="h-100" src={images[current]} alt="" />
-        <button onClick={handleNext}>==</button>
+      <div className="relative flex flex-col items-center">
+        <div className="flex items-center">
+          <button onClick={handlePrev}>{"<"}</button>
+
+          <img className="h-100 w-60" src={images[current]} alt="" />
+
+          <button onClick={handleNext}>{">"}</button>
+        </div>
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-4 bg-[#000000ad] rounded">
+          {images.map((_, index) => (
+            <span
+              key={index}
+              className={`cursor-pointer text-lg ${
+                current === index ? "font-bold text-white" : "text-gray-400"
+              }`}
+              onClick={() => setCurrent(index)}
+            >
+              {index + 1}
+            </span>
+          ))}
+        </div>
       </div>
     </>
   );
