@@ -6,13 +6,20 @@ function Form() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  console.log(register);
+    reset,
+    watch,
+  } = useForm({
+    defaultValues: {
+      company: "tech",
+    },
+  });
 
   const submit = (data) => {
     console.log(data);
-    console.log(data.username);
+    reset();
   };
+  const password = watch("password");
+  console.log(password);
 
   return (
     <>
@@ -126,6 +133,47 @@ function Form() {
               <p className="text-[red] text-[12px]">{errors.message.message}</p>
             )}
           </div>
+          <div>
+            <label htmlFor="password">password</label>
+            <input
+              type="password"
+              id="password"
+              {...register("password", {
+                required: "password is required",
+                validate: (text) => {
+                  console.log(text);
+                  return text.includes("@") || "please include @";
+                },
+              })}
+              className="border-b border-b-[#91A2B1] focus:outline-none pl-2 pb-4 pt-2"
+            />
+            {errors.password && (
+              <p className="text-[red] text-[12px]">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="confirmPassword">confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              {...register("confirmPassword", {
+                required: "confirmPassword is required",
+                validate: (text) => {
+                  return text === password || "password doesn't match";
+                },
+              })}
+              className="border-b border-b-[#91A2B1] focus:outline-none pl-2 pb-4 pt-2"
+            />
+            {errors.confirmPassword && (
+              <p className="text-[red] text-[12px]">
+                {errors.confirmPassword.message}
+              </p>
+            )}
+          </div>
+
           <div className="mt-6 flex items-center gap-6.5">
             <div className="relative w-6 h-6">
               <input
