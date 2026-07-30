@@ -21,6 +21,9 @@ function Form() {
   const password = watch("password");
   console.log(password);
 
+  const isRobot = watch("robot");
+  console.log(isRobot);
+
   return (
     <>
       <section className="flex flex-col items-center">
@@ -204,6 +207,31 @@ function Form() {
               Stay up-to-date with company announcements and updates to our API
             </label>
           </div>
+          <div className="relative flex gap-2">
+            <input
+              type="checkbox"
+              {...register("robot", {})}
+              id="robot"
+              className="peer w-6 h-6 appearance-none bg-[#C0CBD5] checked:bg-[#BA4270]"
+            />
+            <span className="absolute inset-0 hidden items-center justify-center peer-checked:flex pointer-events-none">
+              <svg
+                width="14"
+                height="12"
+                viewBox="0 0 14 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M1.06055 6.03415L4.2335 9.20711L12.3799 1.06067"
+                  stroke="white"
+                  strokewidth="3"
+                />
+              </svg>
+            </span>
+            <label htmlFor="robot">i am not a robot</label>
+          </div>
+          {isRobot && <div>find only busses</div>}
           <button
             type="submit"
             className="w-38 h-12 bg-transparent border border-[#36536B] rounded-3xl mt-6 hover:bg-[#36536B] hover:text-white text-[15px] font-bold text-[#36536B] tracking-[-0.12px]"
