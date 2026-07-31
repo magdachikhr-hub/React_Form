@@ -1,10 +1,12 @@
 import schema from "../validations/schema";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { handleKeyDown, handlePaste } from "../validations/BlockNumbers";
+import { useNavigate } from "react-router-dom";
 
 function Form() {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -18,10 +20,17 @@ function Form() {
     resolver: yupResolver(schema),
   });
 
+  const [registered, setRegistered] = useState(false);
+
   const submit = (data) => {
     console.log(data);
+    navigate("/images");
+    setRegistered(true);
     reset();
   };
+
+  console.log(registered);
+
   const password = watch("password");
   console.log(password);
 

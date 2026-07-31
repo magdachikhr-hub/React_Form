@@ -19,7 +19,7 @@ const schema = yup.object({
     .string()
     .min(8, "minimum 8 characters")
     .required("password is required")
-    .matches("/@/", "please include @ in your password"),
+    .matches(/@/, "please include @ in your password"),
 });
 
 export default schema;
