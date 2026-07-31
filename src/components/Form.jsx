@@ -1,5 +1,8 @@
+import schema from "../validations/schema";
 import React from "react";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { handleKeyDown, handlePaste } from "../validations/BlockNumbers";
 
 function Form() {
   const {
@@ -12,6 +15,7 @@ function Form() {
     defaultValues: {
       company: "tech",
     },
+    resolver: yupResolver(schema),
   });
 
   const submit = (data) => {
@@ -40,13 +44,9 @@ function Form() {
               id="name"
               className="border-b border-b-[#91A2B1] focus:outline-none pl-2 pb-4"
               placeholder="Name"
-              {...register("username", {
-                required: "name is empty, please enter your name",
-                minLength: {
-                  value: 2,
-                  message: "name must be min 2 characters",
-                },
-              })}
+              onKeyDown={handleKeyDown}
+              onPaste={handlePaste}
+              {...register("username")}
             />
             {errors.username && (
               <p className="text-[red] text-[12px]">
