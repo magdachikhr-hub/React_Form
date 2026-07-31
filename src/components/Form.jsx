@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { handleKeyDown, handlePaste } from "../validations/BlockNumbers";
 import { useNavigate } from "react-router-dom";
 
-function Form() {
+function Form({ setRegistered }) {
   const navigate = useNavigate();
   const {
     register,
@@ -20,16 +20,12 @@ function Form() {
     resolver: yupResolver(schema),
   });
 
-  const [registered, setRegistered] = useState(false);
-
   const submit = (data) => {
     console.log(data);
     navigate("/images");
     setRegistered(true);
     reset();
   };
-
-  console.log(registered);
 
   const password = watch("password");
   console.log(password);
