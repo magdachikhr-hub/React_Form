@@ -10,8 +10,8 @@ export const handleKeyDown = (e) => {
 
 export const handlePaste = (e) => {
   console.log(e.target.value);
-  const pastedValue = e.target.value;
-  if (!/[0-9]/.test(pastedValue)) {
+  const pastedValue = e.clipboardData.getData("text");
+  if (/[0-9]/.test(pastedValue)) {
     console.log("its number");
 
     e.preventDefault();

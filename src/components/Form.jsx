@@ -63,13 +63,7 @@ function Form() {
               id="email"
               className="border-b border-b-[#91A2B1] focus:outline-none pl-2 pb-4 pt-2"
               placeholder="Email Address"
-              {...register("email", {
-                required: "Email is required",
-                pattern: {
-                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "Please enter a valid email address",
-                },
-              })}
+              {...register("email")}
             />
             {errors.email && (
               <p className="text-[red] text-[12px] ">{errors.email.message}</p>
@@ -141,13 +135,7 @@ function Form() {
             <input
               type="password"
               id="password"
-              {...register("password", {
-                required: "password is required",
-                validate: (text) => {
-                  console.log(text);
-                  return text.includes("@") || "please include @";
-                },
-              })}
+              {...register("password")}
               className="border-b border-b-[#91A2B1] focus:outline-none pl-2 pb-4 pt-2"
             />
             {errors.password && (
